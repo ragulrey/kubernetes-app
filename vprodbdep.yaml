@@ -16,9 +16,10 @@ spec:
     spec:
       containers:
         - name: vprodb
-          image: dockerrey/vprofiledb
+          image: dockerrey/project-vprodb
+          # To ignore the lost+found file while starting mysql process...
 #          args:
-#            - "--ignore-db-dir=lost+found"
+#            - "--ignore-db-dir=lost+found" 
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: vpro-db-data
@@ -36,7 +37,7 @@ spec:
       volumes:
         - name: vpro-db-data
           awsElasticBlockStore:
-            volumeID: vol-06394c05732b4d363
+            volumeID: vol-0288dcd9d024b229b
             fsType: ext4
 
       initContainers:
